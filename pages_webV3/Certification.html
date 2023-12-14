@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>certificate</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"
+        type="text/css" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet"
+        type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="stylesheet" href="Acss/styles.css">
+    <link rel="stylesheet" type="text/css" href="ahoverA/ahoverA.css">
+
+
+    <style>
+        .text-gradient {
+            background: -webkit-linear-gradient(315deg, #1e30f3 0%, #e21e80 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+
+    /* 0526_2033 */
+  .wait {
+    position: relative;
+    display: inline-block;
+  }
+
+  .tooltip-text {
+    visibility: hidden;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 4px;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 45%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    height: 35px;
+    width: 80px;
+  }
+
+  .tooltip-message {
+    visibility: hidden;
+    background: -webkit-linear-gradient(315deg, #1e30f3 0%, #e21e80 100%);
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 4px;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 80%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    height: 35px;
+    width: 110px;
+  }
+
+  .wait:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .wait:hover .tooltip-message {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  /* 大尺寸樣式 */
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: red;
+    font-family: Helvetica, sans-serif;
+  }
+
+  h2 {
+    margin: 0 0 10px;
+    padding: 0;
+  }
+
+  /* The actual timeline (the vertical ruler) */
+  .timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: #D6D6FF; /* 修改直線顏色為藍色 */
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1px;
+  }
+  
+  .timeline {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* Container around content */
+  .containerNEW {
+    padding: 10px 30px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+  }
+
+  /* The circles on the timeline */
+  .containerNEW::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    right: -10px;
+    background-color: #D6D6FF;
+    border: 2px solid #D6D6FF;
+    top: 20px;
+    border-radius: 50%;
+    z-index: 9999;
+  }
+
+  /* Place the container to the left */
+  .left {
+    left: 0;
+  }
+
+  /* Place the container to the right */
+  .right {
+    left: 50%;
+  }
+
+  /* Add arrows to the left container (pointing right) */
+  .left::before {
+    content: '';
+    height: 2px;
+    position: absolute;
+    top: 28px; /* 調整連接線的位置 */
+    right: -1%; /* 調整連接線的長度 */
+    background-color: #D6D6FF;
+    width: 20%;
+    z-index: 1;
+  }
+
+  /* Add arrows to the right container (pointing left) */
+  .right::before {
+    content: '';
+    height: 2px;
+    position: absolute;
+    top: 28px; /* 調整連接線的位置 */
+    left: -1%; /* 調整連接線的長度 */
+    background-color: #D6D6FF;
+    width: 20%;
+    z-index: 1;
+  }
+
+  /* Fix the circle for containers on the right side */
+  .right::after {
+    left: -9px;
+  }
+
+  /* The actual content */
+  .contentNEW {
+    padding: 20px;
+    background-color: #D6D6FF;
+    position: relative;
+    border-radius: 6px;
+	 word-wrap: break-word;
+  }
+
+  /* 小尺寸樣式 */
+  @media screen and (max-width: 600px) {
+    /* Place the timelime to the left */
+    .timeline::after {
+      left: 17px;
+	  z-index: 2; /* 或許提高這個值 */
+    }
+
+    /* Full-width containers */
+    .containerNEW {
+      width: 100%;
+      padding-left: 50px;
+      padding-right: 20px;
+      height: auto; /* 新增這行使高度自適應內容 */
+	  z-index: 3; /* 嘗試增加這個值 */
+    }
+    
+    .containerNEW::before {
+      top: 20px;
+      left: 35px;
+      border-width: 10px 15px 10px 0;
+      border-color: transparent #D6D6FF transparent transparent;
+    }
+
+    /* Adjust arrow styles */
+    .left::before,
+    .right::before {
+      content: '';
+      position: absolute;
+      top: 10%;
+      transform: translateY(-50%);
+      z-index: 2;
+      width: 0;
+      height: 0;
+      border-style: solid;
+    }
+
+ 
+/* Arrow style for left container (pointing right) */
+.left::before {
+  /* 調整箭頭位置 border-width: 10px 0 10px 10px; */
+  border-width: 10px 10px 10px 0;
+  border-color: transparent transparent transparent #D6D6FF;
+  right: 0; /* 調整箭頭位置 clip-path: polygon(0 0, 100% 50%, 0 100%);*/
+  
+  clip-path: polygon(0 50%, 100% 0, 100% 100%);
+}
+
+/* Arrow style for right container (pointing left) */
+.right::before {
+  border-width: 10px 10px 10px 0;
+  border-color: transparent transparent transparent #D6D6FF;
+  left: -40; /* 調整箭頭位置 1*/
+  
+  clip-path: polygon(0 50%, 100% 0, 100% 100%);
+}
+
+
+    /* Make sure all circles are at the same spot */
+    .left::after,
+    .right::after {
+      left: 8px;
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border: 2px solid #D6D6FF;
+      background-color: #D6D6FF;
+      border-radius: 50%;
+      z-index: 1;
+      top: 20px;
+    }
+    
+    /* Make all right containers behave like the left ones */
+    .right {
+      left: 0%;
+    }
+  }
+		
+    </style>
+
+</head>
+
+<body class="d-flex flex-column h-100  bg-light">
+    <main class="flex-shrink-0">
+        <!-- Navigation-->
+        <nav class="snip1429 navbar navbar-expand-lg navbar-light  py-3">
+            <div class="container ">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation"><span
+                        class="navbar-toggler-icon"></span></button>
+                <div class="collapse  navbar-collapse" id="navbarSupportedContent">
+                    <!-- 
+                                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+                            -->
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0  small ">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+						<li class="nav-item"><a class="nav-link" href="skill.html">Skill/技能</a></li>  
+						<li class="nav-item"><a class="nav-link" href="Certification.html">Certification/證照</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <section class="container py-5 bg-light">
+            <div class="px-5 mb-1">
+                <div class="text-center mb-1">
+                    <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Certificate</span></h1>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+
+
+    <div class="container bg-light">
+        <div class="d-flex align-items-center justify-content-between mb-1">
+                <ul>
+
+                <h2 class=" text-primary fw-bolder ">個人總共有7張證照</h2>
+                </ul> 
+            
+            </div>
+
+            <hr>
+            <br><br>
+   
+      
+	  
+	  
+	  
+	  
+	  
+	
+	
+<div class="timeline">
+  <div class="containerNEW left">
+    <div class="contentNEW">
+      <h2 >2023/4 ITS-Java</h2>
+	  
+	  <img src="assets/img/ITS_java.png" width="100%">
+	 <p></p>
+	  
+      ITS相關說明<br> http://certiport.gotop.com.tw/Certiport/ITS.aspx
+	  
+	  
+    </div>
+  </div>
+  <div class="containerNEW right">
+    <div class="contentNEW">
+      <h2>2023/1 RHCSA</h2>
+	  
+        <img src="assets/img/rhcsa_20260107.png" width="100%">
+	 <p></p>
+      RHCSA- 2026 年 1 月 7 日到期
+	  
+    </div>
+  </div>
+  <div class="containerNEW left">
+    <div class="contentNEW">
+      <h2>2020 CCNA</h2>
+      
+	    <img src="assets/img/ccna_20230712.png" width="100%">
+	 <p></p>
+      CCNA- 2023 年 7 月 12 日到期
+	  
+	  
+    </div>
+  </div>
+  <div class="containerNEW right">
+    <div class="contentNEW">
+      <h2>2014 MTA</h2>
+      
+	    <img src="assets/img/mta_98366.png" width="100%">
+	 <p></p>
+      98366-網路認證
+	  
+	  
+    </div>
+  </div>
+  <div class="containerNEW left">
+    <div class="contentNEW">
+      <h2>網頁設計丙級</h2>
+      
+	   <p >  <img src="assets/img/images.jpg" width="100%" > </p>
+      勞委會
+	  
+	  
+    </div>
+  </div>
+  <div class="containerNEW right">
+    <div class="contentNEW">
+      <h2>硬體裝修丙級</h2>
+      
+	  
+	   <p>  <img src="assets/img/images.jpg" width="100%" > </p>
+      勞委會
+	  
+    </div>
+  </div>
+  
+  <div class="containerNEW left">
+    <div class="contentNEW">
+      <h2>軟體應用丙級</h2>
+      
+	  <p>  <img src="assets/img/images.jpg" width="100%" > </p>
+	 
+      勞委會
+	  
+	  
+    </div>
+  </div>
+  
+  
+</div>
+	
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+        <br> <br>
+    </div>
+
+
+
+
+
+
+    <!-- Footer-->
+    <footer class="bg-white py-4 mt-auto">
+        <div class="container px-5">
+            <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                <div class="col-auto">
+                    <div class="small m-0">Copyright &copy; Your Website 2023</div>
+                </div>
+                <div class="col-auto">
+
+                    <div class="wait">
+                            <a class="small" href="#!">Privacy</a>
+                            <span class="mx-1">&middot;</span>
+                            <a class="small" href="#!">Terms</a>
+                            <span class="mx-1">&middot;</span>
+                            
+                            <div class="tooltip-text">尚未</div>
+
+                   
+                    </div>
+
+                    <div class="wait">
+                        <a class="small" href="https://docs.google.com/forms/d/e/1FAIpQLSdvI4EcYu_SW1AfV5-dGDg65ElYtJlXcsjpA6PfA9i2fcn1DQ/viewform?usp=sf_link" target="_blank">Contact</a>
+                        <div class="tooltip-message">連絡我Forms</div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="Ajs/scripts.js"></script>
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * *                               SB Forms JS                               * *-->
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+</body>
+
+</html>
